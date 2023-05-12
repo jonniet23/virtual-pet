@@ -87,6 +87,55 @@ describe('constructor', () => {
                 expect(pet.hunger).toEqual(0);
               }); 
           });
+          describe('checkUp', () => {
+            it('decribes whether the pet needs exercise', () => {
+              const pet = new Pet('fido');
+          
+              pet.fitness = 3;
+              pet.checkUp();
+          
+              expect(pet.checkUp()).toBe('I need a walk');
+            });
+
+            it('decribes whether the pet needs exercise', () => {
+              const pet = new Pet('fido');
+          
+              pet.fitness = 4;
+              pet.checkUp();
+          
+              expect(pet.checkUp()).toBe('I feel great!');
+            });
+
+            it('describes whether the pet feels hungry', () => {
+              const pet = new Pet('fido');
+          
+              pet.hunger = 5;
+              pet.checkUp();
+          
+              expect(pet.checkUp()).toBe('I am hungry');
+            });
+
+            it('describes whether the pet feels hungry', () => {
+              const pet = new Pet('fido');
+          
+              pet.hunger = 3;
+              pet.checkUp();
+          
+              expect(pet.checkUp()).toBe('I feel great!');
+            });
+  
+            it('describes whether the pet feels hungry and needs exercise', () => {
+              const pet = new Pet('fido');
+          
+             pet.fitness = 3; 
+             pet.hunger = 5;
+              pet.checkUp();
+          
+              expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+            });
+          });
+          
+           
     });
   });
 });
