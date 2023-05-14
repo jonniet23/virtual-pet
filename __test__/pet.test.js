@@ -49,6 +49,14 @@ describe('constructor', () => {
           expect(pet.fitness).toEqual(7);
           });
 
+          it('throws an error if the pet is not alive', () => {
+            const pet = new Pet('Fido');
+      
+            pet.age = 35;
+      
+            expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+          });
+
           describe('walk', () => {
             it('increases fitness by 4', () => {
               const pet = new Pet('fido');
@@ -66,6 +74,14 @@ describe('constructor', () => {
               pet.walk();
           
               expect(pet.fitness).toEqual(10);
+            });
+            
+            it('throws an error if the pet is not alive', () => {
+              const pet = new Pet('Fido');
+        
+              pet.fitness = 0;
+        
+              expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
             });
 
             describe('feed', () => {
@@ -86,7 +102,16 @@ describe('constructor', () => {
             
                 expect(pet.hunger).toEqual(0);
               }); 
-          });
+
+              it('throws an error if the pet is not alive', () => {
+                const pet = new Pet('Fido');
+          
+                pet.age = 30;
+          
+                expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+              });
+            });
+          
           describe('checkUp', () => {
             it('decribes whether the pet needs exercise', () => {
               const pet = new Pet('fido');
@@ -132,6 +157,14 @@ describe('constructor', () => {
               pet.checkUp();
           
               expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+            });
+            
+            it('throws an error if the pet is not alive', () => {
+              const pet = new Pet('Fido');
+        
+              pet.age = 30;
+        
+              expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
             });
           });
           
