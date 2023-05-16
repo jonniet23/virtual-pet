@@ -1,4 +1,5 @@
 const Pet = require('../src/pet');
+
 describe('constructor', () => {
     
     it('sets the name property', () => {
@@ -23,6 +24,12 @@ describe('constructor', () => {
 
       expect(pet.fitness).toEqual(10);
     });
+
+    it('sets a child name', () => {
+      const pet = new Pet('Fido');
+      expect(pet.childrenNames[0]).toBe('Amelia', 'Lassie');
+    });
+  });
 
     describe('growUp', () => {
       it('increments the age by 1', () => {
@@ -167,8 +174,5 @@ describe('constructor', () => {
               expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
             });
           });
-          
-           
-    });
   });
 });
